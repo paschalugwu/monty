@@ -48,6 +48,22 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
+* struct help - argument for the current opcode
+* @data_struct: stack mode, stack (default) and queue
+* @argument: the arguments of the string
+*
+* Description: global structure used to pass data around the functions easily
+*/
+typedef struct help
+{
+	int data_struct;
+	char *argument;
+} help;
+help global;
+
+extern int status;
+
+/**
  * struct global_vars - globally useful variables, all rolled into one
  * @top: double pointer to top of stack
  * @ops: double pointer to an instruction struct
