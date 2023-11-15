@@ -48,7 +48,7 @@ typedef struct instruction_s
 #define INSTRUCTIONS { \
 		{"push", _push},\
 		{"pall", _pall},\
-		{"pint", pint},\
+		{"pint", _pint},\
 		{"pop", pop},\
 		{"swap", swap},\
 		{"nop", nop},\
@@ -81,7 +81,7 @@ extern int status;
 
 void _push(stack_t **stack, unsigned int line_cnt);
 void _pall(stack_t **stack, unsigned int line_cnt);
-void pint(stack_t **stack, unsigned int line_cnt);
+void _pint(stack_t **stack, unsigned int line_cnt);
 void swap(stack_t **stack, unsigned int line_cnt);
 void pop(stack_t **stack, unsigned int line_cnt);
 void nop(stack_t **stack, unsigned int line_cnt);
