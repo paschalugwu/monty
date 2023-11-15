@@ -1,7 +1,5 @@
 #ifndef MONTY
 #define MONTY
-
-#define  _POSIX_C_SOURCE 200809L
 #define _GNU_SOURCE
 
 #include <stdlib.h>
@@ -16,7 +14,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-
+#include <stddef.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -34,7 +32,7 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct instruction_s - opcoode and its function
+ * struct instruction_s - opcode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
  *
@@ -47,6 +45,24 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+#define INSTRUCTIONS { \
+		{"push", _push},\
+		{"pall", _pall},\
+		{"pint", pint},\
+		{"pop", pop},\
+		{"swap", swap},\
+		{"nop", nop},\
+		{"div", _div},\
+		{"mul", _mul},\
+		{"add", _add},\
+		{"sub", _sub},\
+		{"mod", mod},\
+		{"pchar", pchar},\
+		{"pstr", pstr},\
+		{"rotl", rotl},\
+		{"rotr", rotr},\
+		{NULL, NULL} \
+	}
 /**
 * struct help - argument for the current opcode
 * @data_struct: stack mode, stack (default) and queue
@@ -63,58 +79,30 @@ help global;
 
 extern int status;
 
-/**
- * struct global_vars - globally useful variables, all rolled into one
- * @top: double pointer to top of stack
- * @ops: double pointer to an instruction struct
-**/
-typedef struct global_vars
-{
-	stack_t **top;
-	instruction_t **ops;
-} glob_vars;
+void _push(stack_t **stack, unsigned int line_cnt);
+void _pall(stack_t **stack, unsigned int line_cnt);
+void pint(stack_t **stack, unsigned int line_cnt);
+void swap(stack_t **stack, unsigned int line_cnt);
+void pop(stack_t **stack, unsigned int line_cnt);
+void nop(stack_t **stack, unsigned int line_cnt);
+void _div(stack_t **stack, unsigned int line_cnt);
+void _add(stack_t **stack, unsigned int line_cnt);
+void _sub(stack_t **stack, unsigned int line_cnt);
+void _mul(stack_t **stack, unsigned int line_cnt);
+void mod(stack_t **stack, unsigned int line_cnt);
+void pchar(stack_t **stack, unsigned int line_cnt);
+void pstr(stack_t **stack, unsigned int line_cnt);
+void rotl(stack_t **stack, unsigned int line_count);
+void rotr(stack_t **stack, unsigned int line_count);
+void _opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
-extern glob_vars globv;
+int is_digit(char *string);
+int isnumber(char *str);
 
-/**
- * struct var_s - struct to contain the main variables of the Monty interpreter
- * @queue: flag to determine if in stack vs queue mode
- * @stack_len: length of the stack
- */
-typedef struct var_s
-{
-	int queue;
-	size_t stack_len;
-} var_t;
+/* Linked list prototypes */
+stack_t *add_node(stack_t **stack, const int n);
+stack_t *queue_node(stack_t **stack, const int n);
+void free_stack(stack_t *stack);
+size_t print_stack(const stack_t *stack);
 
-var_t var;
-
-extern var_t var;
-
-#define STACK 0
-#define QUEUE 1
-
-void stack_init(stack_t **head);
-void free_all(void);
-int file_reader(char *filename, stack_t **stack);
-void get_po(stack_t **stack, char *op, unsigned int line_number);
-void _push(stack_t **stack, unsigned int line_number);
-void _pall(stack_t **stack, unsigned int line_number);
-int interpreter(char *num_string, unsigned int line_number);
-void _pint(stack_t **stack, unsigned int line_number);
-void _pop(stack_t **stack, unsigned int line_number);
-void _swap(stack_t **stack, unsigned int line_number);
-void _add(stack_t **stack, unsigned int line_number);
-void _nop(stack_t **stack, unsigned int line_number);
-void _sub(stack_t **stack, unsigned int line_number);
-void _div(stack_t **stack, unsigned int line_number);
-void _mul(stack_t **stack, unsigned int line_number);
-void _mod(stack_t **stack, unsigned int line_number);
-void _pchar(stack_t **stack, unsigned int line_number);
-void _pstr(stack_t **stack, unsigned int line_number);
-void _rotl(stack_t **stack, unsigned int line_number);
-void _rotr(stack_t **stack, unsigned int line_number);
-void _stack(stack_t **stack, unsigned int line_number);
-void _queue(stack_t **stack, unsigned int line_number);
-
-#endif /* MONTY */
+#endif /* MONTY_H */

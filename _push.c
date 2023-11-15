@@ -17,7 +17,7 @@ void _push(stack_t **stack, unsigned int line_cnt)
 	 * argument passed to the push opcode
 	*/
 
-	if ((is_digit(n)) == 0)
+	if ((isdigit(n)) == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_cnt);
 		status = EXIT_FAILURE;
@@ -31,7 +31,7 @@ void _push(stack_t **stack, unsigned int line_cnt)
 	}
 	if (global.data_struct == 1)
 	{
-		if (!_add_node(stack, atoi(global.argument)))
+		if (!add_node(stack, atoi(global.argument)))
 		{
 			return;
 			status = EXIT_FAILURE;
@@ -39,7 +39,7 @@ void _push(stack_t **stack, unsigned int line_cnt)
 	}
 	else
 	{
-		if (!_queue_node(stack, atoi(global.argument)))
+		if (!queue_node(stack, atoi(global.argument)))
 		{
 			return;
 			status = EXIT_FAILURE;
