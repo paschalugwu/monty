@@ -1,7 +1,6 @@
 #ifndef MONTY_H
 #define MONTY_H
 
-#define _GNU_SOURCE
 #include <stddef.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -72,8 +71,8 @@ help global;
 
 extern int status;
 
-void PUSH(stack_t **stack, unsigned int line_cnt);
-void PALL(stack_t **stack, unsigned int line_cnt);
+void push(stack_t **stack, unsigned int line_cnt);
+void pall(stack_t **stack, unsigned int line_cnt);
 void pint(stack_t **stack, unsigned int line_cnt);
 void swap(stack_t **stack, unsigned int line_cnt);
 void pop(stack_t **stack, unsigned int line_cnt);

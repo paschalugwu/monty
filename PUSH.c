@@ -7,7 +7,7 @@
  *
  * Return: void
  */
-void PUSH(stack_t **stack, unsigned int line_cnt)
+void push(stack_t **stack, unsigned int line_cnt)
 {
 	char *n = global.argument;
 
