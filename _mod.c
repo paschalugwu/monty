@@ -1,7 +1,7 @@
 #include "monty.h"
 
 /**
- * mod - computes the remainder of the division
+ * _mod - computes the remainder of the division
  * @stack: stack given by main
  * @line_cnt: line counter
  *
