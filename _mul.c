@@ -18,7 +18,7 @@
  * - It then calls the  pop  function to remove the top element from the
  * stack.
  * - Finally, it updates the value of the new top element ( (*stack)->n )
- * with the calculated result. 
+ * with the calculated result.
  */
 void _mul(stack_t **stack, unsigned int line_cnt)
 {
