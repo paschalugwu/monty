@@ -51,7 +51,7 @@ typedef struct instruction_s
 		{"pint", _pint},\
 		{"pop", _pop},\
 		{"swap", _swap},\
-		{"nop", nop},\
+		{"nop", _nop},\
 		{"div", _div},\
 		{"mul", _mul},\
 		{"add", _add},\
@@ -84,7 +84,7 @@ void _pall(stack_t **stack, unsigned int line_cnt);
 void _pint(stack_t **stack, unsigned int line_cnt);
 void _swap(stack_t **stack, unsigned int line_cnt);
 void _pop(stack_t **stack, unsigned int line_cnt);
-void nop(stack_t **stack, unsigned int line_cnt);
+void _nop(stack_t **stack, unsigned int line_cnt);
 void _div(stack_t **stack, unsigned int line_cnt);
 void _add(stack_t **stack, unsigned int line_cnt);
 void _sub(stack_t **stack, unsigned int line_cnt);

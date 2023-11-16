@@ -30,6 +30,6 @@ void _add(stack_t **stack, unsigned int line_cnt)
 		return;
 	}
 	result = ((*stack)->next->n) + ((*stack)->n);
-	pop(stack, line_cnt); /* For top node */
+	_pop(stack, line_cnt); /* For top node */
 	(*stack)->n = result;
 }
