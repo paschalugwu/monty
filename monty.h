@@ -60,7 +60,7 @@ typedef struct instruction_s
 		{"pchar", _pchar},\
 		{"pstr", _pstr},\
 		{"rotl", _rotl},\
-		{"rotr", rotr},\
+		{"rotr", _rotr},\
 		{NULL, NULL} \
 	}
 /**
@@ -93,7 +93,7 @@ void _mod(stack_t **stack, unsigned int line_cnt);
 void _pchar(stack_t **stack, unsigned int line_cnt);
 void _pstr(stack_t **stack, unsigned int line_cnt);
 void _rotl(stack_t **stack, unsigned int line_count);
-void rotr(stack_t **stack, unsigned int line_count);
+void _rotr(stack_t **stack, unsigned int line_count);
 void _opcode(stack_t **stack, char *str, unsigned int line_cnt);
 
 int is_digit(char *string);
