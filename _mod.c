@@ -22,7 +22,7 @@
  * - Finally, it updates the value of the new top element ( (*stack)->n )
  * with the calculated result.
  */
-void mod(stack_t **stack, unsigned int line_cnt)
+void _mod(stack_t **stack, unsigned int line_cnt)
 {
 	int result;
 
