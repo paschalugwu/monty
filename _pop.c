@@ -30,6 +30,7 @@ void _pop(stack_t **stack, unsigned int line_cnt)
 		status = EXIT_FAILURE;
 		return;
 	}
+
 	tmp = (*stack)->next;
 	free(*stack);
 	*stack = tmp;

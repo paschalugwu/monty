@@ -16,6 +16,6 @@
 */
 void _nop(stack_t **stack, unsigned int line_cnt)
 {
-	(void) stack; /* To suppress unused parameter warning */
-	(void) line_cnt; /* To suppress unused parameter warning */
+	(void) stack;
+	(void) line_cnt;
 }
